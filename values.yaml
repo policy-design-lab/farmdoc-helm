@@ -130,7 +130,7 @@ keycloak:
     rules:
       - host: farmdoc.example.com
         paths:
-          - path: /auth/
+          - path: /
             pathType: ImplementationSpecific
   extraEnv: |
     - name: PROXY_ADDRESS_FORWARDING
