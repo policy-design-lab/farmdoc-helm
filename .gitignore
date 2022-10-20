@@ -1,0 +1,65 @@
+# java binaries
+*.war
+*.ear
+*.class
+bin/
+/*/bin
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# vim swap files
+*.swp
+
+# IDEA:
+.idea/
+**.iml
+**.iml
+
+# IDEA - generated artifacts
+**/build/
+**/out/
+
+# Apple metadata
+**/.DS_Store
+
+# local gradle files
+**/.gradle/
+server/local.properties
+
+.vagrant/
+
+*-test*
+*_test*
+
+# ignore helm charts
+helm/farmdoc/charts
+
+*.dockerconfigjson
+*tls.crt
+*tls.key
+*keycloak.properties
+*values.postgresql.yaml
+
+# config
+*config_jupyterhub*
+__pycache__
+
+# values for deployment
+values-farmdoc-*.yaml
+farmdoc-*-pvc.yaml
+
+# secrets
+*templates/secrets.yaml
+
+# list of dependency charts
+charts/
+
+# box files
+*farmdoc-prod*
+values-*.yaml
+keycloak-farmdoc-realm.json
+regcred.json
+regcred.sh
+*templates/secrets.yaml
+

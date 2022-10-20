@@ -1,0 +1,45 @@
+apiVersion: v2
+name: farmdoc
+icon: https://farmdoc.illinois.edu/wp-content/uploads/2020/07/farmdoc-logo-plain-white@800x160.png
+home: https://farmdoc.illinois.edu/
+description: This program calculates premiums, evaluates insurance payments, and provides historical data useful
+  when making crop insurance decisions for multiple crops. Estimates are for crops in midwest and southeast states.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 1.0.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+appVersion: 1.0.0
+
+# List of people that maintain this helm chart.
+maintainers:
+  - name: Rob Kooper
+    email: kooper@illinois.edu
+  - name: Yong Wook Kim
+    email: ywkim@illinois.edu
+
+# location of source code
+sources:
+  - https://opensource.ncsa.illinois.edu/bitbucket/projects/FD
+
+# dependencies for the helm chart, use helm dep install to the install them.
+dependencies:
+  - name: keycloak
+    version: ~18
+    repository: https://codecentric.github.io/helm-charts
+  - name: postgresql
+    version: ~10
+    repository: https://charts.bitnami.com/bitnami
+
+# annotations for artifact.io
+annotations:
+  artifacthub.io/links: |
+    - name: Helm Chart
+      url: https://opensource.ncsa.illinois.edu/bitbucket/projects/FD/repos/fd-helm
+  artifacthub.io/changes: |
+    - init helm
