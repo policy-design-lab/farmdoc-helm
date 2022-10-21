@@ -138,13 +138,13 @@ keycloak:
     - name: KEYCLOAK_USER
       value: keycloak
     - name: KEYCLOAK_PASSWORD
-      value:
+      value: keycloak
     - name: KEYCLOAK_FRONTEND_URL
-      value:
+      value: localhost
     - name: DB_VENDOR
       value: postgres
     - name: DB_ADDR
-      value:
+      value: farmdoc-postgresql 
     - name: DB_PORT
       value: "5432"
     - name: DB_DATABASE
@@ -152,8 +152,14 @@ keycloak:
     - name: POSTGRES_USER
       value: keycloak
     - name: POSTGRES_PASSWORD
-      value: 
+      value: keycloak
     - name: DATA
+      value: /home/keycloak/docker_data
+    - name: HOST_NAME
+      value:
+    - name: ADMIN_USER_ID
+      value:
+    - name: ADMIN_PASSWORD
       value:
     - name: HOST_NAME
       value:
@@ -161,27 +167,14 @@ keycloak:
       value:
     - name: ADMIN_PASSWORD
       value:
-    - name: TRAEFIK_IPFILTER
+    - name: HOST_NAME
       value:
-    - name: TRAEFIK_HTTP_PORT
-      value: 80
-    - name: TRAEFIK_HTTPS_PORT
-      value: 443
-    - name: TRAEFIK_HTTPS_OPTIONS
-      value: TLS
-    - name: TRAEFIK_HTTP_REDIRECT
-      value: Redirect.EntryPoint:https
-    - name: TRAEFIK_ACME_ENABLE
-      value: true
-    - name: ALLOWED_HOSTS
-      value: *
-    - name: NGINX_HTTP_PORT
-      value: 80
-    - name: NGINX_HTTPS_PORT
-      value: 443
+    - name: ADMIN_USER_ID
+      value:
+    - name: ADMIN_PASSWORD
+      value:
     - name: VAR
       value: $
     - name: NODE_PATH
       value: src
-
 
