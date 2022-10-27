@@ -61,5 +61,3 @@ values-*.yaml
 keycloak-farmdoc-realm.json
 regcred.json
 regcred.sh
-*templates/secrets.yaml
-
