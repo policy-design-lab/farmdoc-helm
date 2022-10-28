@@ -121,62 +121,19 @@ postgresql:
 keycloak:
   postgresql:
     enabled: false
+  auth:
+    adminUser: admin
+    adminPassword: admin
+  externalDatabase:
+    host: farmdoc-postgresql-headless
+    port: 5432
+    user: keycloak
+    password: keycloak
+    database: keycloak
   ingress:
-    tls: []
     enabled: true
-    servicePort: http
-    hosts:
-      - farmdoc.example.com
-    rules:
-      - host: farmdoc.example.com
-        paths:
-          - path: /auth/
-            pathType: ImplementationSpecific
-  extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
-    - name: KEYCLOAK_USER
-      value: keycloak
-    - name: KEYCLOAK_PASSWORD
-      value: keycloak
-    - name: KEYCLOAK_FRONTEND_URL
-      value: localhost
-    - name: DB_VENDOR
-      value: postgres
-    - name: DB_ADDR
-      value: farmdoc-postgresql 
-    - name: DB_PORT
-      value: "5432"
-    - name: DB_DATABASE
-      value: keycloak
-    - name: POSTGRES_USER
-      value: keycloak
-    - name: POSTGRES_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          name: {{ include "farmdoc.fullname" . }}-postgresql
-          key: POSTGRESQL_PASSWORD
-    - name: DATA
-      value: /home/keycloak/docker_data
-    - name: HOST_NAME
-      value:
-    - name: ADMIN_USER_ID
-      value:
-    - name: ADMIN_PASSWORD
-      value:
-    - name: HOST_NAME
-      value:
-    - name: ADMIN_USER_ID
-      value:
-    - name: ADMIN_PASSWORD
-      value:
-    - name: HOST_NAME
-      value:
-    - name: ADMIN_USER_ID
-      value:
-    - name: ADMIN_PASSWORD
-      value:
-    - name: VAR
-      value: $
-    - name: NODE_PATH
-      value: src
+    hostname: farmdoc.ncsa.illinois.edu
+    path: /auth/
+  production: true
+  proxy: edge
+
