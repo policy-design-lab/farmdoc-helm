@@ -61,3 +61,6 @@ values-*.yaml
 keycloak-farmdoc-realm.json
 regcred.json
 regcred.sh
+
+# test files
+*foo.yaml
