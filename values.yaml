@@ -93,6 +93,38 @@ affinity: {}
 
 
 # ----------------------------------------------------------------------
+# DEPLOYMENT CONFIGURATION
+# ----------------------------------------------------------------------
+frontend:
+  replicas: 1
+  image:
+    repository: frontend
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+  ingress:
+    annotations:
+
+api:
+  replicas: 1
+  image:
+    repository: farmdoc-api
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 5000
+  ingress:
+    annotations:
+  env:
+    postgres_user: postgres
+    postgres_password: postgres
+    postgres_host: farmdoc-postgresql-headless
+    postgres_db: farmdoc
+    postgres_port: 5432
+    deploy_env: development
+
+# ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
 # ----------------------------------------------------------------------
 
@@ -133,7 +165,7 @@ keycloak:
   ingress:
     enabled: true
     hostname: farmdoc.ncsa.illinois.edu
-    path: /auth/
   production: true
   proxy: edge
+  httpRelativePath: /auth/
 
