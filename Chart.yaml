@@ -30,10 +30,10 @@ sources:
 # dependencies for the helm chart, use helm dep install to the install them.
 dependencies:
   - name: keycloak
-    version: ~11
+    version: ~12
     repository: https://charts.bitnami.com/bitnami
   - name: postgresql
-    version: ~10
+    version: ~12
     repository: https://charts.bitnami.com/bitnami
 
 # annotations for artifact.io

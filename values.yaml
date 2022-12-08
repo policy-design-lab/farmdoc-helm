@@ -119,7 +119,7 @@ api:
   env:
     postgres_user: postgres
     postgres_password: postgres
-    postgres_host: farmdoc-postgresql-headless
+    postgres_host: farmdoc-postgresql-hl
     postgres_db: farmdoc
     postgres_port: 5432
     deploy_env: development
@@ -132,6 +132,8 @@ api:
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
+  auth:
+    postgresPassword: postgres
   postgresqlPassword: postgres
   initdbScripts:
     farmdoc.sql: |
@@ -157,7 +159,7 @@ keycloak:
     adminUser: admin
     adminPassword: admin
   externalDatabase:
-    host: farmdoc-postgresql-headless
+    host: farmdoc-postgresql-hl
     port: 5432
     user: keycloak
     password: keycloak
@@ -165,6 +167,7 @@ keycloak:
   ingress:
     enabled: true
     hostname: farmdoc.ncsa.illinois.edu
+    path: /auth/
   production: true
   proxy: edge
   httpRelativePath: /auth/

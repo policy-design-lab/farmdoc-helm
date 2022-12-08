@@ -42,14 +42,14 @@ spec:
           ports:
             - containerPort: {{ .Values.api.service.port }}
               name: api
-{{/*          livenessProbe:*/}}
-{{/*            httpGet:*/}}
-{{/*              path: /api*/}}
-{{/*              port: {{ .Values.api.service.port }}*/}}
-{{/*          readinessProbe:*/}}
-{{/*            httpGet:*/}}
-{{/*              path: /api*/}}
-{{/*              port: {{ .Values.api.service.port }}*/}}
+          livenessProbe:
+            httpGet:
+              path: /api/apps
+              port: {{ .Values.api.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /api/apps
+              port: {{ .Values.api.service.port }}
           resources:
             {{- toYaml .Values.api.resources | nindent 12 }}
       {{- with .Values.api.nodeSelector }}
