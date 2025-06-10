@@ -103,6 +103,7 @@ frontend:
   service:
     type: ClusterIP
     port: 80
+  app_env: production
   ingress:
     annotations:
 

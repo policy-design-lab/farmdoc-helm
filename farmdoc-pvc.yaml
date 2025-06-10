@@ -2,49 +2,13 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: farmdoc-geoserver-pv
+  name: farmdoc-postgres-pv
   labels:
-    name: farmdoc-geoserver
+    name: farmdoc-postgres
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Ti
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    path: /radiant/projects/bbdk/farmdoc-tst/geoserver
-    server: radiant-nfs.ncsa.illinois.edu
-    readOnly: false
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: farmdoc-data-pv
-  labels:
-    name: farmdoc-data
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 5Ti
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  nfs:
-    path: /radiant/projects/bbdk/farmdoc-tst/data
-    server: radiant-nfs.ncsa.illinois.edu
-    readOnly: false
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: farmdoc-datawolf-pv
-  labels:
-    name: farmdoc-datawolf
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 5Ti
+    storage: 5Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
@@ -56,7 +20,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: geoserver-pvc
+  name: postgres-pvc
 spec:
   storageClassName: manual
   accessModes:
@@ -66,34 +30,4 @@ spec:
       storage: 5Ti
   selector:
     matchLabels:
-      name: farmdoc-geoserver
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: data-pvc
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Ti
-  selector:
-    matchLabels:
-      name: farmdoc-data
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: datawolf-pvc
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 5Ti
-  selector:
-    matchLabels:
-      name: farmdoc-datawolf
+      name: farmdoc-postgres
