@@ -93,6 +93,39 @@ affinity: {}
 
 
 # ----------------------------------------------------------------------
+# DEPLOYMENT CONFIGURATION
+# ----------------------------------------------------------------------
+frontend:
+  replicas: 1
+  image:
+    repository: frontend
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 80
+  app_env: production
+  ingress:
+    annotations:
+
+api:
+  replicas: 1
+  image:
+    repository: farmdoc-api
+    tag: develop
+  service:
+    type: ClusterIP
+    port: 5000
+  ingress:
+    annotations:
+  env:
+    postgres_user: postgres
+    postgres_password: postgres
+    postgres_host: farmdoc-postgresql-hl
+    postgres_db: farmdoc
+    postgres_port: 5432
+    deploy_env: development
+
+# ----------------------------------------------------------------------
 # DEPENDENCIES CONFIGURATION
 # ----------------------------------------------------------------------
 
@@ -100,6 +133,8 @@ affinity: {}
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
+  auth:
+    postgresPassword: postgres
   postgresqlPassword: postgres
   initdbScripts:
     farmdoc.sql: |
@@ -121,34 +156,20 @@ postgresql:
 keycloak:
   postgresql:
     enabled: false
+  auth:
+    adminUser: admin
+    adminPassword: admin
+  externalDatabase:
+    host: farmdoc-postgresql-hl
+    port: 5432
+    user: keycloak
+    password: keycloak
+    database: keycloak
   ingress:
-    tls: []
     enabled: true
-    servicePort: http
-    hosts:
-      - farmdoc.example.com
-    rules:
-      - host: farmdoc.example.com
-        paths:
-          - path: /auth/
-            pathType: ImplementationSpecific
-  extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: "true"
-    - name: KEYCLOAK_USER
-      value: keycloak
-    - name: KEYCLOAK_PASSWORD
-      value: keycloak
-    - name: DB_VENDOR
-      value: postgres
-    - name: DB_ADDR
-      value: farmdoc-postgresql
-    - name: DB_PORT
-      value: "5432"
-    - name: DB_DATABASE
-      value: keycloak
-    - name: DB_USER
-      value: keycloak
-    - name: DB_PASSWORD
-      value: keycloak
+    hostname: farmdoc.ncsa.illinois.edu
+    path: /auth/
+  production: true
+  proxy: edge
+  httpRelativePath: /auth/
 
