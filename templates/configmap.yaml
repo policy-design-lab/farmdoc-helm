@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: farmdoc
+  name: {{ include "farmdoc.name" . }}

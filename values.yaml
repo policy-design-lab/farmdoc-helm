@@ -133,6 +133,10 @@ api:
 # POSTGRESQL
 # ----------------------------------------------------------------------
 postgresql:
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: "15.1.0"
   auth:
     postgresPassword: postgres
   postgresqlPassword: postgres
@@ -154,6 +158,10 @@ postgresql:
 # KEYCLOAK
 # ----------------------------------------------------------------------
 keycloak:
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/keycloak
+    tag: "19.0.3"
   postgresql:
     enabled: false
   auth:
