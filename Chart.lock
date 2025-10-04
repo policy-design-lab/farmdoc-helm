@@ -1,9 +1,9 @@
 dependencies:
 - name: keycloak
   repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
-  version: 12.3.0
+  version: 18.7.1
 - name: postgresql
   repository: https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
   version: 12.12.10
-digest: sha256:d4328e60747ac084f9cc4afedb96f6a89d76950aef0a972e607779087105d4b7
-generated: "2025-10-03T10:59:45.717291748-05:00"
+digest: sha256:2eecb4bac36d64d6d2fcacb602bf91a37c62375c34ef0b310805e5c4a6adc164
+generated: "2025-10-04T09:44:40.798494515-05:00"
