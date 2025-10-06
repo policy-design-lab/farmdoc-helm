@@ -161,7 +161,7 @@ keycloak:
   image:
     registry: docker.io
     repository: bitnamilegacy/keycloak
-    tag: "23.0.7"
+    tag: "19.0.3"
   postgresql:
     enabled: false
   auth:
